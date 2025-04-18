@@ -22,6 +22,9 @@ final class AppCoordinator: Coordinator {
     
     private func showShowsList() {
         let service = TVMazeService()
+        let viewModel = ShowsListViewModel(service: service)
+        let viewController = ShowsListViewController(viewModel: viewModel)
+        navigationController.setViewControllers([viewController], animated: false)
     }
     
 }
