@@ -35,14 +35,14 @@ final class ShowDetailsView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.backgroundColor = .systemGray6
-        imageView.layer.cornerRadius = 8
+        imageView.layer.cornerRadius = UIConstants.CornerRadius.medium
         return imageView
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = UIConstants.Font.title
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -51,7 +51,7 @@ final class ShowDetailsView: UIView {
     private let scheduleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16)
+        label.font = UIConstants.Font.body
         label.textColor = .secondaryLabel
         label.textAlignment = .center
         return label
@@ -60,7 +60,7 @@ final class ShowDetailsView: UIView {
     private let genresLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16)
+        label.font = UIConstants.Font.body
         label.textColor = .secondaryLabel
         label.textAlignment = .center
         return label
@@ -69,7 +69,7 @@ final class ShowDetailsView: UIView {
     private let summaryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16)
+        label.font = UIConstants.Font.body
         label.numberOfLines = 0
         return label
     }()
@@ -119,28 +119,28 @@ final class ShowDetailsView: UIView {
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            posterImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            posterImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: UIConstants.Spacing.medium),
             posterImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            posterImageView.widthAnchor.constraint(equalToConstant: 240),
-            posterImageView.heightAnchor.constraint(equalToConstant: 360),
+            posterImageView.widthAnchor.constraint(equalToConstant: UIConstants.ShowDetails.posterWidth),
+            posterImageView.heightAnchor.constraint(equalToConstant: UIConstants.ShowDetails.posterHeight),
             
-            titleLabel.topAnchor.constraint(equalTo: posterImageView.bottomAnchor, constant: 16),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: posterImageView.bottomAnchor, constant: UIConstants.Spacing.medium),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UIConstants.Spacing.medium),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UIConstants.Spacing.medium),
             
-            scheduleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            scheduleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            scheduleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            scheduleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: UIConstants.Spacing.small),
+            scheduleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UIConstants.Spacing.medium),
+            scheduleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UIConstants.Spacing.medium),
             
-            genresLabel.topAnchor.constraint(equalTo: scheduleLabel.bottomAnchor, constant: 8),
-            genresLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            genresLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            genresLabel.topAnchor.constraint(equalTo: scheduleLabel.bottomAnchor, constant: UIConstants.Spacing.small),
+            genresLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UIConstants.Spacing.medium),
+            genresLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UIConstants.Spacing.medium),
             
-            summaryLabel.topAnchor.constraint(equalTo: genresLabel.bottomAnchor, constant: 16),
-            summaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            summaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            summaryLabel.topAnchor.constraint(equalTo: genresLabel.bottomAnchor, constant: UIConstants.Spacing.medium),
+            summaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UIConstants.Spacing.medium),
+            summaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UIConstants.Spacing.medium),
             
-            episodesTableView.topAnchor.constraint(equalTo: summaryLabel.bottomAnchor, constant: 24),
+            episodesTableView.topAnchor.constraint(equalTo: summaryLabel.bottomAnchor, constant: UIConstants.Spacing.large),
             episodesTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             episodesTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             episodesTableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
@@ -213,7 +213,7 @@ extension ShowDetailsView: UITableViewDataSource {
 extension ShowDetailsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72
+        return UIConstants.ShowDetails.episodeCellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

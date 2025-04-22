@@ -15,14 +15,14 @@ final class EpisodeTableViewCellContentView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.backgroundColor = .systemGray6
-        imageView.layer.cornerRadius = 4
+        imageView.layer.cornerRadius = UIConstants.CornerRadius.small
         return imageView
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.font = UIConstants.Font.subtitle
         label.numberOfLines = 2
         return label
     }()
@@ -30,7 +30,7 @@ final class EpisodeTableViewCellContentView: UIView {
     private let episodeNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 14)
+        label.font = UIConstants.Font.caption
         label.textColor = .secondaryLabel
         return label
     }()
@@ -50,20 +50,20 @@ final class EpisodeTableViewCellContentView: UIView {
         addSubview(episodeNumberLabel)
         
         NSLayoutConstraint.activate([
-            episodeImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            episodeImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            episodeImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            episodeImageView.widthAnchor.constraint(equalToConstant: 100),
-            episodeImageView.heightAnchor.constraint(equalToConstant: 56),
+            episodeImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.Spacing.medium),
+            episodeImageView.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.Spacing.small),
+            episodeImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UIConstants.Spacing.small),
+            episodeImageView.widthAnchor.constraint(equalToConstant: UIConstants.EpisodeCell.imageWidth),
+            episodeImageView.heightAnchor.constraint(equalToConstant: UIConstants.EpisodeCell.imageHeight),
             
-            titleLabel.leadingAnchor.constraint(equalTo: episodeImageView.trailingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: episodeImageView.trailingAnchor, constant: UIConstants.Spacing.medium),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.Spacing.medium),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.Spacing.small),
             
-            episodeNumberLabel.leadingAnchor.constraint(equalTo: episodeImageView.trailingAnchor, constant: 16),
-            episodeNumberLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            episodeNumberLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            episodeNumberLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -8)
+            episodeNumberLabel.leadingAnchor.constraint(equalTo: episodeImageView.trailingAnchor, constant: UIConstants.Spacing.medium),
+            episodeNumberLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.Spacing.medium),
+            episodeNumberLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: UIConstants.CornerRadius.small),
+            episodeNumberLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -UIConstants.Spacing.small)
         ])
     }
     
