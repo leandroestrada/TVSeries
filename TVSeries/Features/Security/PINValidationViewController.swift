@@ -50,7 +50,6 @@ extension PINValidationViewController: PINValidationViewDelegate {
 
 extension PINValidationViewController: PINValidationViewModelDelegate {
     func pinValidationViewModelDidValidatePIN(_ viewModel: PINValidationViewModel) {
-        // Será implementado pelo coordinator
     }
     
     func pinValidationViewModelDidFailValidation(_ viewModel: PINValidationViewModel) {

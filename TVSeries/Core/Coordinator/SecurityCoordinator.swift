@@ -62,6 +62,5 @@ extension SecurityCoordinator: PINValidationViewModelDelegate {
     }
     
     func pinValidationViewModelDidFailValidation(_ viewModel: PINValidationViewModel) {
-        
     }
-} 
+}

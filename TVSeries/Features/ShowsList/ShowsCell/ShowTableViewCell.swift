@@ -24,8 +24,9 @@ final class ShowTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        selectionStyle = .none
         backgroundColor = .systemBackground
+        isUserInteractionEnabled = true
+        contentView.isUserInteractionEnabled = true
         
         customContentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(customContentView)

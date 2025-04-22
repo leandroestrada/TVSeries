@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol ShowsListViewModelUIDelegate: AnyObject {
+    func showsListViewModelDidUpdateShows(_ viewModel: ShowsListViewModel)
+    func showsListViewModel(_ viewModel: ShowsListViewModel, didFailWithError error: Error)
+}
+
 final class ShowsListViewController: UIViewController {
     
     private let viewModel: ShowsListViewModel
@@ -17,7 +22,6 @@ final class ShowsListViewController: UIViewController {
         self.viewModel = viewModel
         self.contentView = ShowsListView()
         super.init(nibName: nil, bundle: nil)
-        self.viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -83,7 +87,7 @@ extension ShowsListViewController: UISearchResultsUpdating {
     
 }
 
-extension ShowsListViewController: ShowsListViewModelDelegate {
+extension ShowsListViewController: ShowsListViewModelUIDelegate {
     
     func showsListViewModelDidUpdateShows(_ viewModel: ShowsListViewModel) {
         DispatchQueue.main.async {
@@ -97,9 +101,6 @@ extension ShowsListViewController: ShowsListViewModelDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
         }
-    }
-    
-    func showsListViewModel(_ viewModel: ShowsListViewModel, didSelectShow show: Show) {
     }
     
 }

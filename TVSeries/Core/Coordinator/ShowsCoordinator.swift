@@ -8,6 +8,7 @@
 import UIKit
 
 final class ShowsCoordinator: Coordinator {
+    
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     
@@ -22,6 +23,7 @@ final class ShowsCoordinator: Coordinator {
         let viewModel = ShowsListViewModel(service: service)
         viewModel.delegate = self
         let viewController = ShowsListViewController(viewModel: viewModel)
+        viewModel.uiDelegate = viewController
         navigationController.setViewControllers([viewController], animated: false)
     }
     
@@ -37,23 +39,25 @@ final class ShowsCoordinator: Coordinator {
         let viewController = EpisodeDetailsViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
+    
 }
 
 extension ShowsCoordinator: ShowsListViewModelDelegate {
+    
     func showsListViewModelDidUpdateShows(_ viewModel: ShowsListViewModel) {
-      
+    }
+    
+    func showsListViewModel(_ viewModel: ShowsListViewModel, didFailWithError error: Error) {
     }
     
     func showsListViewModel(_ viewModel: ShowsListViewModel, didSelectShow show: Show) {
         showShowDetails(show)
     }
     
-    func showsListViewModel(_ viewModel: ShowsListViewModel, didFailWithError error: Error) {
-       
-    }
 }
 
 extension ShowsCoordinator: ShowDetailsViewModelDelegate {
+    
     func showDetailsViewModelDidUpdateEpisodes(_ viewModel: ShowDetailsViewModel) {
     }
     
@@ -63,4 +67,5 @@ extension ShowsCoordinator: ShowDetailsViewModelDelegate {
     func showDetailsViewModel(_ viewModel: ShowDetailsViewModel, didSelectEpisode episode: Episode) {
         showEpisodeDetails(episode)
     }
-} 
+    
+}

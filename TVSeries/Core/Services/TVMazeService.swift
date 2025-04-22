@@ -25,7 +25,6 @@ final class TVMazeService: TVMazeServiceProtocol {
         do {
             return try await apiClient.request(TVMazeEndpoint.shows(page: page))
         } catch {
-            print("Error fetching shows: \(error)")
             throw error
         }
     }
@@ -34,7 +33,6 @@ final class TVMazeService: TVMazeServiceProtocol {
         do {
             return try await apiClient.request(TVMazeEndpoint.searchShows(query: query))
         } catch {
-            print("Error searching shows: \(error)")
             throw error
         }
     }
@@ -43,7 +41,6 @@ final class TVMazeService: TVMazeServiceProtocol {
         do {
             return try await apiClient.request(TVMazeEndpoint.showDetails(id: id))
         } catch {
-            print("Error fetching show details: \(error)")
             throw error
         }
     }
@@ -52,7 +49,6 @@ final class TVMazeService: TVMazeServiceProtocol {
         do {
             return try await apiClient.request(TVMazeEndpoint.showEpisodes(id: id))
         } catch {
-            print("Error fetching show episodes: \(error)")
             throw error
         }
     }
