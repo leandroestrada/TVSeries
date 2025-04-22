@@ -61,10 +61,7 @@ final class ShowsListViewController: UIViewController {
 extension ShowsListViewController: ShowsListViewDelegate {
     
     func showsListView(_ view: ShowsListView, didSelectShowAt indexPath: IndexPath) {
-        let show = viewModel.shows[indexPath.row]
-        let detailsViewModel = ShowDetailsViewModel(show: show, service: TVMazeService())
-        let detailsViewController = ShowDetailsViewController(viewModel: detailsViewModel)
-        navigationController?.pushViewController(detailsViewController, animated: true)
+        viewModel.didSelectShow(at: indexPath)
     }
     
 }
@@ -100,6 +97,9 @@ extension ShowsListViewController: ShowsListViewModelDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
         }
+    }
+    
+    func showsListViewModel(_ viewModel: ShowsListViewModel, didSelectShow show: Show) {
     }
     
 }

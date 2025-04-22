@@ -56,9 +56,7 @@ extension ShowDetailsViewController: ShowDetailsViewDelegate {
     
     func showDetailsView(_ view: ShowDetailsView, didSelectEpisodeAt indexPath: IndexPath) {
         guard let episode = viewModel.episode(at: indexPath) else { return }
-        let episodeViewModel = EpisodeDetailsViewModel(episode: episode)
-        let episodeViewController = EpisodeDetailsViewController(viewModel: episodeViewModel)
-        navigationController?.pushViewController(episodeViewController, animated: true)
+        viewModel.didSelectEpisode(episode)
     }
     
 }
@@ -79,4 +77,6 @@ extension ShowDetailsViewController: ShowDetailsViewModelDelegate {
         }
     }
     
+    func showDetailsViewModel(_ viewModel: ShowDetailsViewModel, didSelectEpisode episode: Episode) {
+    }
 }

@@ -10,6 +10,7 @@ import Foundation
 protocol ShowsListViewModelDelegate: AnyObject {
     func showsListViewModelDidUpdateShows(_ viewModel: ShowsListViewModel)
     func showsListViewModel(_ viewModel: ShowsListViewModel, didFailWithError error: Error)
+    func showsListViewModel(_ viewModel: ShowsListViewModel, didSelectShow show: Show)
 }
 
 final class ShowsListViewModel {
@@ -67,6 +68,11 @@ final class ShowsListViewModel {
         shows = []
         currentPage = 0
         await loadNextPage()
+    }
+    
+    func didSelectShow(at indexPath: IndexPath) {
+        let show = shows[indexPath.row]
+        delegate?.showsListViewModel(self, didSelectShow: show)
     }
     
 }

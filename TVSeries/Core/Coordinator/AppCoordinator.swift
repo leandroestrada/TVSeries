@@ -12,19 +12,40 @@ final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    private let window: UIWindow
+    private let securityService: SecurityServiceProtocol
+    
+    init(window: UIWindow) {
+        self.window = window
+        self.navigationController = UINavigationController()
+        self.securityService = SecurityService()
     }
     
     func start() {
-        showShowsList()
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        
+        showSecurity()
     }
     
-    private func showShowsList() {
+    private func showSecurity() {
+        let coordinator = SecurityCoordinator(navigationController: navigationController, securityService: securityService)
+        coordinator.delegate = self
+        addChildCoordinator(coordinator)
+        coordinator.start()
+    }
+    
+    private func showShows() {
         let service = TVMazeService()
-        let viewModel = ShowsListViewModel(service: service)
-        let viewController = ShowsListViewController(viewModel: viewModel)
-        navigationController.setViewControllers([viewController], animated: false)
+        let coordinator = ShowsCoordinator(navigationController: navigationController, service: service)
+        addChildCoordinator(coordinator)
+        coordinator.start()
     }
-    
+}
+
+extension AppCoordinator: SecurityCoordinatorDelegate {
+    func securityCoordinatorDidFinish(_ coordinator: SecurityCoordinator) {
+        removeChildCoordinator(coordinator)
+        showShows()
+    }
 }
