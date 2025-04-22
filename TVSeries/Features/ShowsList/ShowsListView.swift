@@ -21,8 +21,8 @@ final class ShowsListView: UIView {
         tableView.register(ShowTableViewCell.self, forCellReuseIdentifier: ShowTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 106
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        tableView.rowHeight = UIConstants.ShowsList.cellHeight
+        tableView.separatorInset = UIConstants.ShowsList.separatorInsets
         return tableView
     }()
     

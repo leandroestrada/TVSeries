@@ -27,14 +27,14 @@ final class EpisodeDetailsView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.backgroundColor = .systemGray6
-        imageView.layer.cornerRadius = 8
+        imageView.layer.cornerRadius = UIConstants.CornerRadius.medium
         return imageView
     }()
     
     private let episodeInfoLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.font = UIConstants.Font.body
         label.textColor = .secondaryLabel
         label.textAlignment = .center
         return label
@@ -43,7 +43,7 @@ final class EpisodeDetailsView: UIView {
     private let summaryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16)
+        label.font = UIConstants.Font.body
         label.numberOfLines = 0
         return label
     }()
@@ -79,19 +79,19 @@ final class EpisodeDetailsView: UIView {
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            episodeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            episodeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            episodeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            episodeImageView.heightAnchor.constraint(equalTo: episodeImageView.widthAnchor, multiplier: 9/16),
+            episodeImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: UIConstants.Spacing.medium),
+            episodeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UIConstants.Spacing.medium),
+            episodeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UIConstants.Spacing.medium),
+            episodeImageView.heightAnchor.constraint(equalTo: episodeImageView.widthAnchor, multiplier: UIConstants.EpisodeDetails.imageAspectRatio),
             
-            episodeInfoLabel.topAnchor.constraint(equalTo: episodeImageView.bottomAnchor, constant: 16),
-            episodeInfoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            episodeInfoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            episodeInfoLabel.topAnchor.constraint(equalTo: episodeImageView.bottomAnchor, constant: UIConstants.Spacing.medium),
+            episodeInfoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UIConstants.Spacing.medium),
+            episodeInfoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UIConstants.Spacing.medium),
             
-            summaryLabel.topAnchor.constraint(equalTo: episodeInfoLabel.bottomAnchor, constant: 16),
-            summaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            summaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            summaryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            summaryLabel.topAnchor.constraint(equalTo: episodeInfoLabel.bottomAnchor, constant: UIConstants.Spacing.medium),
+            summaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UIConstants.Spacing.medium),
+            summaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UIConstants.Spacing.medium),
+            summaryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -UIConstants.Spacing.medium)
         ])
     }
     

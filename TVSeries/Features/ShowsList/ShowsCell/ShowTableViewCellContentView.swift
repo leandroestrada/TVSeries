@@ -15,14 +15,14 @@ final class ShowTableViewCellContentView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.backgroundColor = .systemGray6
-        imageView.layer.cornerRadius = 4
+        imageView.layer.cornerRadius = UIConstants.CornerRadius.small
         return imageView
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.font = UIConstants.Font.subtitle
         label.numberOfLines = 2
         label.textColor = .label
         return label
@@ -44,14 +44,14 @@ final class ShowTableViewCellContentView: UIView {
         addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            showImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            showImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            showImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            showImageView.widthAnchor.constraint(equalToConstant: 60),
-            showImageView.heightAnchor.constraint(equalToConstant: 90),
+            showImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.Spacing.medium),
+            showImageView.topAnchor.constraint(equalTo: topAnchor, constant: UIConstants.Spacing.small),
+            showImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UIConstants.Spacing.small),
+            showImageView.widthAnchor.constraint(equalToConstant: UIConstants.ShowsList.imageWidth),
+            showImageView.heightAnchor.constraint(equalToConstant: UIConstants.ShowsList.imageHeight),
             
-            titleLabel.leadingAnchor.constraint(equalTo: showImageView.trailingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            titleLabel.leadingAnchor.constraint(equalTo: showImageView.trailingAnchor, constant: UIConstants.Spacing.medium),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.Spacing.medium),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
