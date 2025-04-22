@@ -10,6 +10,7 @@ import Foundation
 protocol ShowDetailsViewModelDelegate: AnyObject {
     func showDetailsViewModelDidUpdateEpisodes(_ viewModel: ShowDetailsViewModel)
     func showDetailsViewModel(_ viewModel: ShowDetailsViewModel, didFailWithError error: Error)
+    func showDetailsViewModel(_ viewModel: ShowDetailsViewModel, didSelectEpisode episode: Episode)
 }
 
 final class ShowDetailsViewModel {
@@ -77,4 +78,7 @@ final class ShowDetailsViewModel {
         return episodes[indexPath.row]
     }
     
+    func didSelectEpisode(_ episode: Episode) {
+        delegate?.showDetailsViewModel(self, didSelectEpisode: episode)
+    }
 }
